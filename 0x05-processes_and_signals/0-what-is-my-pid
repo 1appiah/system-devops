@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# returns the process id of this script
+echo "$$"
