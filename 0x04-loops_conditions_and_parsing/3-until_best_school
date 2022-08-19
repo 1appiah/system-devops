@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# uses until to print 10 times
+n=1
+until [ "$n" = 11 ];
+      do echo "Best School"
+      n=$((n + 1))
+done
