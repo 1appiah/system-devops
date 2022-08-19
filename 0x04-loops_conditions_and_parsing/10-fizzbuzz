@@ -14,7 +14,7 @@ while [ $n -le 100 ];
 		else
 			echo "Fizz";
 		fi
-	elif [ "$a" = 0 ];
+	elif [ $((n%5)) = 0 ];
 	then
 		echo "Buzz";
 	else
