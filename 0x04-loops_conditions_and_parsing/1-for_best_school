@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+for i in "Best School" "Best School" "Best School"\
+ "Best School" "Best School" "Best School"\
+ "Best School" "Best School" "Best School" "Best School";
+    do echo "$i";
+done
