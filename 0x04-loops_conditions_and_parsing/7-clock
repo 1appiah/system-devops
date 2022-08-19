@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# print "best school" ten times in a while loop
+hour=1
+min=1
+echo "Hour: 0"
+while [ "$hour" -le 13 ];
+do
+    echo $min
+    min=$((min + 1));
+    if [ "$min" = 59 ];
+    then
+	echo $min
+	if [ "$hour" -le 12 ];
+	then
+	   echo "Hour: $hour";
+	fi
+	hour=$((hour + 1));
+	min=1
+    fi
+done
