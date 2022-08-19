@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# print "best school" ten times in a while loop
+n=0
+while [ "$n" -le 19 ];
+      do n=$((n + 1));
+      case $n in
+	  4)
+	      echo $n
+	      echo "bad luck from China"
+	      ;;
+	  9)
+	      echo $n
+	      echo "bad luck from Japan"
+	      ;;
+	  17)
+	      echo $n
+	      echo "bad luck from Italy"
+	      ;;
+	  *)
+	      echo $n
+	      ;;
+      esac
+done
