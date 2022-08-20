@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# dont stop me now
+var=$(ps -aux | pgrep bash | tail -1)
+kill "$var"
