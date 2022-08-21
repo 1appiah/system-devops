@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 # dont stop me now
-var=$( (ps aux | pgrep bash | tail -4) | head -1)
+var=$( (ps aux | pgrep bash | tail -2) | head -1)
 kill "$var"
