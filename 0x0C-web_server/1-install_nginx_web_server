@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # install Nginx on a server
-sudo apt-get -y install nginx
-sudo echo -e "Hello World!" > /index.html
+apt-get -y install nginx
+echo "Hello World!" > /index.html
 
