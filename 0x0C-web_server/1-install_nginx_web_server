@@ -2,5 +2,5 @@
 # install Nginx on a server
 sudo apt-get update
 sudo apt-get -y install nginx
-sudo echo "Hello World!" > /var/www/html/index.html
+sudo echo -e "\"Hello World!\"" > /var/www/html/index.html
 
