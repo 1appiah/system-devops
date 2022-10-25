@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# installs a load balancer
+sudo apt-get install --no-install-recommends software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-2.6
+apt-get install haproxy=2.6.\*
+sudo sed -i "35 a frontend myfrontend" /etc/haproxy/haproxy.cfg
+sudo sed -i "36 a\      default_backend web-backend" /etc/haproxy/haproxy.cfg
+sudo sed -i "37 a backend web-backend" /etc/haproxy/haproxy.cfg
+sudo sed -i "38 a\      balance roundrobin" /etc/haproxy/haproxy.cfg
+sudo sed -i "39 a\      server 38731-web-01 44.200.43.203:80 check" /etc/haproxy/haproxy.cfg
+sudo sed -i "38 a\      server 38731-web-02 54.160.66.218:80 check" /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
