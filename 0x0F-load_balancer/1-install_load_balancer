@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
-# installs a load balancer
-sudo apt-get install --no-install-recommends software-properties-common
+# configures a brand new ubuntu machine and installs haproxy
+sudo apt-get -y install --no-install-recommends software-properties-common
 sudo add-apt-repository ppa:vbernat/haproxy-2.6
-apt-get install haproxy=2.6.\*
-sudo sed -i "35 a frontend myfrontend" /etc/haproxy/haproxy.cfg
-sudo sed -i "36 a\      default_backend web-backend" /etc/haproxy/haproxy.cfg
-sudo sed -i "37 a backend web-backend" /etc/haproxy/haproxy.cfg
-sudo sed -i "38 a\      balance roundrobin" /etc/haproxy/haproxy.cfg
-sudo sed -i "39 a\      server 38731-web-01 44.200.43.203:80 check" /etc/haproxy/haproxy.cfg
-sudo sed -i "38 a\      server 38731-web-02 54.160.66.218:80 check" /etc/haproxy/haproxy.cfg
+sudo apt-get install -y haproxy=2.6.\*
+sudo echo -e "frontend holberton\n\
+     bind $(hostname -I | sed -e 's/\ *$//g'):80\n\
+     bind $(hostname -i):80\n\
+     default_backend servers_hol\n\n\
+backend servers_hol\n\
+	balance roundrobin\n\
+	mode http\n\
+	server 38731-web-01 34.232.70.87:80\n\
+	server 38731-web-02 35.153.16.39:80" | sudo tee -a /etc/haproxy/haproxy.cfg > /dev/null
 sudo service haproxy restart
