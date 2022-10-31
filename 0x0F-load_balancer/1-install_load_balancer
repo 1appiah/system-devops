@@ -13,4 +13,8 @@ backend servers_hol\n\
 	mode http\n\
 	server 38731-web-01 34.232.70.87:80\n\
 	server 38731-web-02 35.153.16.39:80" | sudo tee -a /etc/haproxy/haproxy.cfg > /dev/null
-sudo service haproxy restart
+if [ "$(pgrep -c haproxy)" -le 0 ]; then
+    sudo service haproxy start
+else
+    sudo service haproxy restart
+fi
