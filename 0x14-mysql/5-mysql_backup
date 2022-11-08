@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# creates a local backup of databases
+pass="$1"
+back_upfile="$(date +%d-%m-%y)"
+sudo sudo mysqldump -uroot -p"$pass" --all-databases > backup.sql
+tar -cvzf "$back_upfile.tar.gz" backup.sql
