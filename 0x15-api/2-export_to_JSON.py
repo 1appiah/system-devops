@@ -16,12 +16,11 @@ if __name__ == "__main__":
 
     to_js = dict()
     todos = []
-    with open('{}.csv'.format(emp_id), 'w', encoding="utf8") as f:
-        for i in get_all_todos:
-            if i['userId'] == int(emp_id):
-                this_info = {"task": i['title'], "completed": i['completed'],
-                             "username": get_emp_info['username']}
-                todos.append(this_info)
+    for i in get_all_todos:
+        if i['userId'] == int(emp_id):
+            this_info = {"task": i['title'], "completed": i['completed'],
+                         "username": get_emp_info['username']}
+            todos.append(this_info)
     to_js[emp_id] = todos
     with open("{}.json".format(emp_id), "w", encoding="utf8") as f:
         f.write(json.dumps(to_js))
