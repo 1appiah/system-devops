@@ -20,6 +20,6 @@ if __name__ == "__main__":
                 todos_done_list.append(item["title"])
                 todos_done += 1
     print("Employee {} is done with tasks({}/{}):"
-          .format(get_emp_info["name"], todos_done, to_dos))
+          .format(json.dumps(get_emp_info["name"]), todos_done, to_dos))
     for item in todos_done_list:
         print("\t {}".format(item))
