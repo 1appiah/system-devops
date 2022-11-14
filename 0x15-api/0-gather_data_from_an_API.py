@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """gather data from an API"""
-from sys import argv
 import json
 import requests
+from sys import argv
 
 if __name__ == "__main__":
     emp_id = argv[1]
