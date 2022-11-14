@@ -18,4 +18,5 @@ if __name__ == "__main__":
         for i in get_all_todos:
             if i['userId'] == int(emp_id):
                 f.write('"{}","{}","{}","{}"\n'.format(
-                    emp_id, get_emp_info['username'], i['completed'], i['title']))
+                    emp_id, get_emp_info['username'],
+                    i['completed'], i['title']))
