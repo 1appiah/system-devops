@@ -4,10 +4,10 @@ import json
 import requests
 from sys import argv
 
+emp_info = 'https://jsonplaceholder.typicode.com/users'
+all_todos = 'https://jsonplaceholder.typicode.com/todos'
 if __name__ == "__main__":
     emp_id = argv[1]
-    emp_info = 'https://jsonplaceholder.typicode.com/users/'
-    all_todos = 'https://jsonplaceholder.typicode.com/todos'
     get_emp_info = requests.get(emp_info).json()
     get_all_todos = requests.get(all_todos).json()
     to_dos = 0
