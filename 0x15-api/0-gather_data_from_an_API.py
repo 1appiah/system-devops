@@ -6,20 +6,24 @@ from sys import argv
 
 if __name__ == "__main__":
     emp_id = argv[1]
-    emp_info = 'https://jsonplaceholder.typicode.com/users/' + emp_id
+    emp_info = 'https://jsonplaceholder.typicode.com/users/'
     all_todos = 'https://jsonplaceholder.typicode.com/todos'
-    get_emp_info = json.loads(requests.get(emp_info).text)
-    get_all_todos = json.loads(requests.get(all_todos).text)
+    get_emp_info = requests.get(emp_info).json()
+    get_all_todos = requests.get(all_todos).json()
     to_dos = 0
     todos_done = 0
     todos_done_list = []
+    name = None
+    for i in get_emp_info:
+        if i['id'] == int(emp_id):
+            name = i['name']
     for item in get_all_todos:
         if item['userId'] == int(emp_id):
             to_dos += 1
             if item["completed"]:
                 todos_done_list.append(item["title"])
                 todos_done += 1
-    print("Employee {} is done with tasks({}/{}):"
-          .format(json.dumps(get_emp_info["name"]), todos_done, to_dos))
+    print("Employee {} is done with tasks({}/{}):\n"
+          .format(name, todos_done, to_dos), end="")
     for item in todos_done_list:
-        print("\t {}".format(item))
+        print("\t {}\n".format(item), end="")
