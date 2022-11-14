@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 """gather data from an API"""
-import requests
 from sys import argv
 import json
+import requests
 
 if __name__ == "__main__":
     emp_id = argv[1]
@@ -16,7 +16,7 @@ if __name__ == "__main__":
     for item in get_all_todos:
         if item['userId'] == int(emp_id):
             to_dos += 1
-            if item["completed"] == True:
+            if item["completed"]:
                 todos_done_list.append(item["title"])
                 todos_done += 1
     print("Employee {} is done with tasks({}/{}):"
