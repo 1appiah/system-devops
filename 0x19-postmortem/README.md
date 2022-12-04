@@ -22,6 +22,6 @@ Using strace, the server was queried for the landing page’s endpoint, and stra
 One of the logs contained the line “require-once(/var/www/html/wp-includes/class-wp-locale.phpp) – no such file or directory” indicating either that the file is missing or its name is changed. We looked through the /var/www/html/wp-includes/ directory for the same filename or a similar one. A similar one “class-wp-locale.php” was found and the name changed to “class-wp-locale.phpp”. The process was then automated with puppet and server restarted.
 
 ## Corrective and Preventative measures
-Add monitoring on server files change
-Restrict configuration files editing to experienced professionals
-Develop faster mechanism for delivering status notifications during incidents
+- Add monitoring on server files change
+- Restrict configuration files editing to experienced professionals
+- Develop faster mechanism for delivering status notifications during incidents
