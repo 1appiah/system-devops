@@ -18,7 +18,8 @@ Other pages were still working and were only accessed by those with some knowled
 
 ## Root Cause and Resolution
 The root cause of the issue was an incorrect name of one of the core wordpress backend files. Apparently an earlier work in the directory mistakenly resulted in an incorrectly spelled /var/www/html/wp-includes/class-wp-locale.php which was supposed to be /var/www/html/wp-includes/class-wp-locale.phpp. 
-Using strace, the server was queried for the landing page’s endpoint, and strace attached to the apache process, logged the series of events happening to render the page. One of the logs contained the line “require-once(/var/www/html/wp-includes/class-wp-locale.phpp) – no such file or directory” indicating either that the file is missing or its name is changed. We looked through the /var/www/html/wp-includes/ directory for the same filename or a similar one. A similar one “class-wp-locale.php” was found and the name changed to “class-wp-locale.phpp”. The process was then automated with puppet and server restarted.
+Using strace, the server was queried for the landing page’s endpoint, and strace attached to the apache process, logged the series of events happening to render the page.  
+One of the logs contained the line “require-once(/var/www/html/wp-includes/class-wp-locale.phpp) – no such file or directory” indicating either that the file is missing or its name is changed. We looked through the /var/www/html/wp-includes/ directory for the same filename or a similar one. A similar one “class-wp-locale.php” was found and the name changed to “class-wp-locale.phpp”. The process was then automated with puppet and server restarted.
 
 ## Corrective and Preventative measures
 Add monitoring on server files change
