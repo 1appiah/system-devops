@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-# reload gunicorn gracefully
+# reload gunicorn gracefully, no downtime
+sudo kill -HUP $(ps -C gunicorn fch -o pid | head -n 1)
+
